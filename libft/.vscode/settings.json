@@ -1,0 +1,101 @@
+{
+    "window.zoomLevel": 0, //李쎌쓽 ?솗???/異뺤냼 ?닔以? 議곗젙 湲곕낯 0
+    "editor.wordWrap": "on", // 'on' 肄붾뱶 ?옄?룞以꾨컮轅?/'off' 以꾨컮轅덉븞?븿
+    "editor.fontFamily": "Consolas", //湲?瑗? ?뙣諛?由?
+    "editor.lineNumbers": "on",  //以? 踰덊샇 ?몴?떆 ?뿬遺?
+    "window.closeWhenEmpty": true, //留덉??留? ?렪吏묎린 ?떕?쓣?븣 李쎈룄 ?떕?쓣吏? ?뿬遺? ?젣?뼱
+    "editor.mouseWheelZoom": true, // Ctrl?궎 ?늻瑜닿퀬 ?엳?쓣?븣 留덉슦?뒪 ?쑀濡? 以?/?븘?썐
+	"editor.minimap.enabled": false, // ?옄?룞????옣 ?젣?뼱 1000ms ?썑 ?뙆?씪 ????옣
+    "editor.cursorStyle": "line", //而ㅼ꽌 ?뒪????씪
+    "powermode.enabled": true, //?뙆?썙紐⑤뱶 ?솢?꽦?솕
+    "powermode.enableShake":false, // 吏꾨룞紐⑤뱶 ?솢?꽦?솕
+    "powermode.maxExplosions": 20, //?룺諛? 理쒕?? 媛쒖닔
+    "powermode.explosionSize": 10, //?룺諛? ?궗?씠利?
+    "powermode.presets": "particles", //?룺諛? 醫낅쪟
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", // window?뿉?꽌 ?꽣誘몃꼸?뿉 ?궗?슜?븯?뒗 ?끂?쓽 寃쎈줈
+    "workbench.iconTheme": "vscode-icons",
+    "files.encoding": "euckr", //icon ?뀒留덈?? vscode_icons ?솗?옣 ?봽濡쒓렇?옩 ?궗?슜
+    "code-runner.executorMap": {
+
+        "javascript": "node",
+        "php": "C:\\php\\php.exe",
+        "python": "python",
+        "perl": "perl",
+        "ruby": "C:\\Ruby23-x64\\bin\\ruby.exe",
+        "go": "go run",
+        "html": "\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\"",
+		"java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+		"c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "cpp": "cd $dir && g++ '$fileName' -o '$fileNameWithoutExt' && .\\'$fileNameWithoutExt'",
+        "kotlin": "cd $dir && kotlinc '$fileName' -include-runtime -d '$fileNameWithoutExt.jar' && java -jar '$fileNameWithoutExt.jar'",
+    },
+
+    "explorer.confirmDelete": false,
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "C_Cpp.updateChannel": "Insiders",
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0} ",
+    "settingsSync.ignoredSettings": [
+
+    ],
+    "terminal.explorerKind": "external",
+    "code-runner.runInTerminal": true,
+    "vsicons.dontShowNewVersionMessage": true,
+    "42header.email": "youpark@student.42seoul.kr",
+    "42header.username": "youpark",
+    "code-runner.executorMapByFileExtension": {
+
+        ".vb": "cd $dir && vbc /nologo $fileName && $dir$fileNameWithoutExt",
+        ".vbs": "cscript //Nologo",
+        ".scala": "scala",
+        ".jl": "julia",
+        ".cr": "crystal",
+        ".ml": "ocaml",
+        ".exs": "elixir",
+        ".hx": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+        ".rkt": "racket",
+        ".scm": "csi -script",
+        ".ahk": "autohotkey",
+        ".au3": "autoit3",
+        ".kt": "cd $dir && kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar && java -jar $fileNameWithoutExt.jar",
+        ".kts": "kotlinc -script",
+        ".dart": "dart",
+        ".pas": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+        ".pp": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+        ".d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+        ".hs": "runhaskell",
+        ".nim": "nim compile --verbosity:0 --hints:off --run",
+        ".csproj": "dotnet run --project",
+        ".fsproj": "dotnet run --project",
+        ".lisp": "sbcl --script",
+        ".kit": "kitc --run",
+        ".v": "v run",
+        ".vsh": "v run",
+        ".sass": "sass --style expanded",
+        ".cu": "cd $dir && nvcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
+    },
+
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false,
+    "editor.renderWhitespace": "boundary",
+    "workbench.colorCustomizations": {
+        "editorWhitespace.foreground": "#6E718E"
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.eol": "\n",
+	"editor.detectIndentation": false,
+	"code-runner.customCommand": "",
+	"code-runner.enableAppInsights": false,
+	"terminal.integrated.rendererType": "dom",
+	"workbench.editor.enablePreviewFromQuickOpen": false,
+	"files.associations": {
+		"bitset": "c",
+		"chrono": "c",
+		"algorithm": "c",
+		"string": "c",
+		"string_view": "c"
+	},
+
+}
