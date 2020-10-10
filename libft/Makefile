@@ -1,58 +1,46 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: youpark <youpark@student.42seoul.kr>       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/10/09 16:40:41 by youpark           #+#    #+#              #
-#    Updated: 2020/10/09 16:43:38 by youpark          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME		=	libft.a
 
-CC = clang
-SRCDIR = srcs
-OBJDIR = objs
-INCDIR = includes
-OUTDIR = .
-CFLAGS = -c -Wall -Wextra -Werror#-g
-NAME = libft.a
-OS = $(shell uname)
-NORM = $(shell find /usr ~ -name 'norminette*' 2>/dev/null | head -1)
+SRCS		=	ft_atoi.c ft_isalpha.c ft_memccpy.c ft_memmove.c ft_strlcat.c ft_strnstr.c \
+				ft_bzero.c ft_isascii.c ft_memchr.c ft_memset.c ft_strlcpy.c ft_strrchr.c \
+				ft_calloc.c ft_isdigit.c ft_memcmp.c ft_strchr.c ft_strlen.c ft_tolower.c \
+				ft_isalnum.c ft_isprint.c ft_memcpy.c ft_strdup.c ft_strncmp.c ft_toupper.c \
+				ft_substr.c ft_strjoin.c ft_strtrim.c ft_putchar_fd.c ft_putstr_fd.c \
+				ft_putendl_fd.c ft_putnbr_fd.c ft_strmapi.c ft_split.c ft_itoa.c ft_strcat.c \
+				ft_strcpy.c ft_strncpy.c ft_strndup.c \
 
-$(shell mkdir -p $(OBJDIR))
+SRCS_B 		= 	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c 				\
+			  	ft_lstadd_back.c ft_lstlast.c ft_lstdelone.c 				\
+			  	ft_lstiter.c ft_lstclear.c ft_lstmap.c
+CC			=	gcc
+CFLAGS		=	-Wall -Wextra -Werror -c
+RM			=	rm -f
+NORM		=	norminette *.h && norminette *.c
 
-$(NAME): all
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
-    $(CC) $< $(CFLAGS) -o $@ -I $(INCDIR)
+OBJS		=	$(SRCS:%.c=%.o)
 
-all: $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(wildcard $(SRCDIR)/*.c))
-    ar -rcs $(OUTDIR)/$(NAME) $^
-clean:
-    rm -rf $(OUTDIR)/$(NAME)
-fclean: clean
-    rm -rf $(OBJDIR)/*.o
-re: fclean
-    make all
-bonus: all
-norm:
-    @if [ -z $(NORM) ]; then\
-        echo "[-] No norminette T.T";\
-    else\
-        $(NORM) srcs/*.c includes/*.h;\
-    fi
-so:
-    @if [ $(OS) = Linux ] ; then\
-        $(CC) -fPIC -c $(wildcard $(SRCDIR)/*.c);\
-        $(CC) -shared -o $(OUTDIR)/libft.so *.o;\
-        rm -rf *.o;\
-    else\
-        echo "[-] This feature only supports Linux";\
-    fi
-soclean:
-    @if [ $(OS) = Linux ] ; then\
-        rm -rf $(OUTDIR)/libft.so;\
-    else\
-        echo "[-] This feature only supports Linux";\
-    fi
-.PHONY: all clean fclean re bonus norm so soclean
+OBJS_B		=	$(SRCS_B:%.c=%.o)
+
+all			:	$(NAME)
+
+$(NAME) 	:	$(OBJS)
+	ar rc $(NAME) $(OBJS)
+
+$(OBJS) 	:	$(SRCS)
+	$(CC) $(CFLAGS) $(SRCS)
+
+$(OBJS_B) 	:	$(SRCS_B)
+	$(CC) $(CFLAGS) $(SRCS_B)
+
+n			:
+	$(NORM)
+
+bonus 		:	fclean $(OBJS) $(OBJS_B)
+	ar rc $(NAME) $(OBJS) $(OBJS_B)
+
+clean		:
+	$(RM) $(OBJS) $(OBJS_B)
+
+fclean		:	clean
+	$(RM) $(NAME)
+
+re			:	fclean all
