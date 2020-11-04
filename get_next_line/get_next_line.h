@@ -28,6 +28,7 @@
 int		get_next_line(int fd, char **line);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+size_t	ft_strlcat(char *dest, const char *src, size_t dstsize);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *s1);
 

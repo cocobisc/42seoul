@@ -17,22 +17,20 @@ int		get_newline_idx(char *s)
 	int	i;
 
 	i = 0;
-	while(s[i])
-	{
-		if(s[i++] == '\n')
+	while (s[i])
+		if (s[i++] == '\n')
 			return (i - 1);
-	}
 	return (-1);
 }
 
-int		split(char **backup, char **line, int idx)
+int		split(char **backup, int idx)
 {
 	int		rest_len;
 	char	*p;
 	char	*temp;
 
 	temp = *backup;
-	backup += idx + 1;
+	*backup += idx + 1;
 	rest_len = ft_strlen(*backup);
 	if (rest_len)
 		p = ft_strdup(*backup);
@@ -49,7 +47,11 @@ int		free_all(char **backup, char **line)
 	{
 		idx = get_newline_idx(*backup);
 		if (idx != -1)
-			return split(backup, line, idx);
+		{
+			(*backup)[idx] = 0;
+			*line = ft_strdup(*backup);
+			return (split(backup, idx));
+		}
 		else
 		{
 			*line = *backup;
@@ -77,12 +79,22 @@ int		get_next_line(int fd, char **line)
 		idx = get_newline_idx(backup[fd]);
 		if (idx != -1)
 		{
-			backup[idx] = 0;
-			*line = ft_strdup(backup[idx]);
-			return (split(&backup[fd], line, idx));
+			backup[fd][idx] = 0;
+			*line = ft_strdup(backup[fd]);
+			return (split(&backup[fd], idx));
 		}
 	}
 	if (size < 0)
 		return (-1);
 	return (free_all(&backup[fd], line));
 }
+
+// int main() {
+// 	int fd = open("t.txt", O_RDONLY);
+// 	char **line;
+// 	get_next_line(fd, line);
+// 	get_next_line(fd, line);
+// 	get_next_line(fd, line);
+// 	get_next_line(fd, line);
+// 	printf("%s\n", *line);
+// }
