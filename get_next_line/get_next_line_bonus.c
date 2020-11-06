@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int		get_newline_idx(char *s)
 {
@@ -33,7 +33,8 @@ int		split(char **backup, int idx)
 	*backup += idx + 1;
 	rest_len = ft_strlen(*backup);
 	if (rest_len)
-		p = ft_strdup(*backup);
+		if (!(p = ft_strdup(*backup)))
+			return (-1);
 	free(temp);
 	*backup = rest_len ? p : 0;
 	return (1);
@@ -49,17 +50,19 @@ int		free_all(char **backup, char **line)
 		if (idx != -1)
 		{
 			(*backup)[idx] = 0;
-			*line = ft_strdup(*backup);
+			if (!(*line = ft_strdup(*backup)))
+				return (-1);
 			return (split(backup, idx));
 		}
 		else
 		{
-			*line = *backup;
-			*backup = 0;
+			if (!(*line = ft_strdup(*backup)))
+				return (-1);
 			return (0);
 		}
 	}
-	*line = ft_strdup("");
+	if (!(*line = ft_strdup("")))
+		return (-1);
 	return (0);
 }
 
@@ -75,12 +78,14 @@ int		get_next_line(int fd, char **line)
 	while ((size = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
 		buff[size] = 0;
-		backup[fd] = ft_strjoin(backup[fd], buff);
+		if (!(backup[fd] = ft_strjoin(backup[fd], buff)))
+			return (-1);
 		idx = get_newline_idx(backup[fd]);
 		if (idx != -1)
 		{
 			backup[fd][idx] = 0;
-			*line = ft_strdup(backup[fd]);
+			if (!(*line = ft_strdup(backup[fd])))
+				return (-1);
 			return (split(&backup[fd], idx));
 		}
 	}
