@@ -9,7 +9,8 @@
 /*   Updated: 2020/10/29 16:44:30 by youpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line_bonus.h"
+
+#include "get_next_line.h"
 
 int		get_newline_idx(char *s)
 {

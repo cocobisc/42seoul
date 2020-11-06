@@ -6,7 +6,7 @@
 /*   By: youpark <youpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 16:50:06 by youpark           #+#    #+#             */
-/*   Updated: 2020/11/03 23:55:23 by youpark          ###   ########.fr       */
+/*   Updated: 2020/11/06 14:58:45 by youpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,3 @@ int		get_next_line(int fd, char **line)
 		return (-1);
 	return (free_all(&backup[fd], line));
 }
-
-// int main() {
-// 	int fd = open("t.txt", O_RDONLY);
-// 	char **line;
-// 	get_next_line(fd, line);
-// 	get_next_line(fd, line);
-// 	get_next_line(fd, line);
-// 	get_next_line(fd, line);
-// 	printf("%s\n", *line);
-// }
