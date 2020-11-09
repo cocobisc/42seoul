@@ -58,6 +58,8 @@ int		free_all(char **backup, char **line)
 		{
 			if (!(*line = ft_strdup(*backup)))
 				return (-1);
+			free(*backup);
+			*backup = 0;
 			return (0);
 		}
 	}
